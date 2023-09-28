@@ -35,17 +35,18 @@ function Studentform() {
                 name:'check username asynchronous',
                 message:"Already undi",
                 test:((value,a)=>{
-                    var p = new Promise();
-                    axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`)
-                    .then((res)=>{
-                        if(res.data.length!==0){
-
-                            return p.resolve(false)
-                        }
-                        else{
-                            return p.resolve(true)
-                        }
-                    })
+                    var p = new Promise((resolve,reject)=>{
+                        axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`)
+                        .then((res)=>{
+                            if(res.data.length!==0){
+                                reject(a.createError({message:"This user is already exist"}))
+                            }
+                            else{
+                                resolve(true)
+                            }
+                        })
+                    });
+                    
                     return p
                 })
             })
@@ -57,7 +58,7 @@ function Studentform() {
     })
   return (
     <div style={{padding:'10px',margin:'10px',border:'1px solid'}}>
-        {/* {console.log(studentform.touched)} */}
+        {console.log(studentform.errors)}
         <h1>Studentform</h1>
         <form onSubmit={studentform.handleSubmit}>
             <input placeholder="firstname" type="text" name="firstname" onBlur={studentform.handleBlur} onChange={studentform.handleChange}/>
@@ -80,7 +81,7 @@ function Studentform() {
             <br />
             <input placeholder="username" type="text" name="username" onBlur={studentform.handleBlur}  onChange={studentform.handleChange}/>
             <div>
-                <b>{studentform.touched.username && studentform.errors.username}</b>
+                <b>{studentform.touched.username && studentform.errors?.username}</b>
             </div>
             <br />
             <input placeholder="password" type="text" name="password" onBlur={studentform.handleBlur}  onChange={studentform.handleChange}/>
