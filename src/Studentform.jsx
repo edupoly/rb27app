@@ -34,20 +34,27 @@ function Studentform() {
             username:Yup.string().required("please enter your username").test({
                 name:'check username asynchronous',
                 message:"Already undi",
-                test:((value,a)=>{
-                    var p = new Promise((resolve,reject)=>{
-                        axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`)
-                        .then((res)=>{
-                            if(res.data.length!==0){
-                                reject(a.createError({message:"This user is already exist"}))
-                            }
-                            else{
-                                resolve(true)
-                            }
-                        })
-                    });
-                    
-                    return p
+                test:(async (value,a)=>{
+                    var res = await axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`);
+                    if(res.data.length!==0){
+                        return a.createError({message:'User hain... alag try kar'})
+                    }
+                    else{
+                        return true
+                    }
+
+                    // var p = new Promise((resolve,reject)=>{
+                    //     axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`)
+                    //     .then((res)=>{
+                    //         if(res.data.length!==0){
+                    //             reject(a.createError({message:"This user is already exist"}))
+                    //         }
+                    //         else{
+                    //             resolve(true)
+                    //         }
+                    //     })
+                    // })
+                    // return p;
                 })
             })
         }),

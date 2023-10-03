@@ -1,3 +1,16 @@
+ <!-- var p = new Promise((resolve,reject)=>{
+                        axios.get(`https://jsonplaceholder.typicode.com/users?username=${value}`)
+                        .then((res)=>{
+                            if(res.data.length!==0){
+                                reject(a.createError({message:"This user is already exist"}))
+                            }
+                            else{
+                                resolve(true)
+                            }
+                        })
+                    });
+                    
+                    return p -->
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
