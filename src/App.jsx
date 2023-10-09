@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Counter from './features/counter/Counter';
-import Todolist from './features/todolist/Todolist';
-
+import { Link, Outlet } from 'react-router-dom';
 function App() {
   return (
     <div className="mybox">
-      <h1>App</h1>
-      <Todolist></Todolist>
-      <Counter></Counter>
+      <Link to='/countries'>Countries</Link>&nbsp;&nbsp;&nbsp;
+      <Link to='/products'>Products</Link>&nbsp;&nbsp;&nbsp;
+      <Link to='/counter'>Counter</Link>&nbsp;&nbsp;&nbsp;
+      <Link to='/todolist'>Todolist</Link>&nbsp;&nbsp;&nbsp;
+      <Outlet></Outlet>
     </div>
   );
 }

@@ -7,21 +7,21 @@ function Todolist() {
     var dispatch=useDispatch()
     var [newtodo,setNewtodo]=useState('')
     console.log(todolist)
-  return (
-    <div className='mybox'>
-        <h1>Todolist</h1>
-        <input type="text" onChange={(e)=>{setNewtodo(e.target.value)}}/>
-        <button onClick={()=>{dispatch(addTodo(newtodo))}}>Add Todo</button>
-        {
-            todolist?.map((t,i)=>{
-                return  <li>
-                            {t}
-                            <button onClick={()=>{dispatch(deleteTodo(i))}}>Delete</button>
-                        </li>
-            })
-        }
-    </div>
-  )
+    return (
+      <div className='mybox'>
+          <h1>Todolist</h1>
+          <input type="text" onChange={(e)=>{setNewtodo(e.target.value)}}/>
+          <button onClick={()=>{dispatch(addTodo(newtodo))}}>Add Todo</button>
+          {
+              todolist?.map((t,i)=>{
+                  return  <li>
+                              {t}
+                              <button onClick={()=>{dispatch(deleteTodo(i))}}>Delete</button>
+                          </li>
+              })
+          }
+      </div>
+    )
 }
 
 export default Todolist
