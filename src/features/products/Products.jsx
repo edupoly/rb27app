@@ -1,8 +1,24 @@
 import React from 'react'
-import { useGetAllProductsQuery } from '../../services/products'
-
+import { useDeleteProductMutation, useGetAllProductsQuery,useLazyGetAllProductsQuery } from '../../services/products'
+import axios from 'axios'
 function Products() {
     var {data,isLoading}=useGetAllProductsQuery()
+    var [rfn]=useLazyGetAllProductsQuery()
+    var [fn]=useDeleteProductMutation();
+
+    function deleteProduct(id){
+        fn(id).then((res)=>{
+            alert("product deleted")
+            rfn();
+        })
+    }
+
+    // function deleteProduct(id){
+    //     axios.delete(`http://localhost:4000/products/${id}`)
+    //     .then(()=>{
+    //         alert("delete ipai")
+    //     })
+    // }
   return (
     <div className='mybox'>
         <h1>Products</h1>
@@ -11,7 +27,10 @@ function Products() {
         }
         {
             data && data.map((product)=>{
-                return <li>{product.title}</li>
+                return <li>
+                    {product.title}
+                    <button onClick={()=>{deleteProduct(product.id)}}>Delete</button>
+                    </li>
             })
         }
     </div>

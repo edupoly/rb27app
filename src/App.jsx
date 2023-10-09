@@ -7,6 +7,7 @@ function App() {
       <Link to='/products'>Products</Link>&nbsp;&nbsp;&nbsp;
       <Link to='/counter'>Counter</Link>&nbsp;&nbsp;&nbsp;
       <Link to='/todolist'>Todolist</Link>&nbsp;&nbsp;&nbsp;
+      <Link to='/addProducts'>Add Products</Link>&nbsp;&nbsp;&nbsp;
       <Outlet></Outlet>
     </div>
   );

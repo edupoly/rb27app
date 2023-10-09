@@ -16,6 +16,7 @@ import Products from './features/products/Products';
 import Counter from './features/counter/Counter';
 import Todolist from './features/todolist/Todolist';
 import CountryDetails from './features/countries/CountryDetails';
+import AddProduct from './features/products/AddProduct';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -46,6 +47,10 @@ import CountryDetails from './features/countries/CountryDetails';
         {
             path:'/',
             element:<Counter></Counter>
+        },
+        {
+          path:'/addProducts',
+          element:<AddProduct></AddProduct>
         }
       ]
     }
