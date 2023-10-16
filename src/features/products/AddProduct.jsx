@@ -6,7 +6,7 @@ function AddProduct() {
     var [addFn]=useAddProductMutation()
     var productForm = useFormik({
         initialValues:{
-            "title": "",
+            "title": "szdn",
             "price": 0,
             "description": "",
             "category": "",
@@ -24,7 +24,7 @@ function AddProduct() {
     <div className='mybox'>
         <h1>AddProduct</h1>
         <form onSubmit={productForm.handleSubmit}>
-            <input type="text" placeholder="title" name="title" onChange={productForm.handleChange} onBlur={productForm.handleBlur}></input>
+            <input type="text" value={productForm.values.title} placeholder="title" name="title" onChange={productForm.handleChange} onBlur={productForm.handleBlur}></input>
             <br />
             <input type="text" placeholder="price" name="price" onChange={productForm.handleChange} onBlur={productForm.handleBlur}></input>
             <br />
